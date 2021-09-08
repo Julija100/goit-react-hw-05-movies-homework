@@ -31,3 +31,16 @@ function fetchMoviesByCast(movieId) {
     ).then(responseStatusHandling);
 }
 //запрос обзоров
+function fetchMoviesByReviews(movieId, pageNumber) {
+    return fetch(
+        `${BASE_URL}/movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US&page=${pageNumber}`
+    ).then(responseStatusHandling);
+}
+
+export {
+    fetchMoviesByName,
+    fetchPopularMoviesByDay,
+    fetchMoviesById,
+    fetchMoviesByCast,
+    fetchMoviesByReviews
+}
