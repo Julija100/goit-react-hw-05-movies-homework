@@ -13,4 +13,8 @@ function fetchMoviesByName(movieName, pageNumber) {
     ).then(responseStatusHandling);
 }
 
-function fetch
+function fetchPopularMoviesByDay(pageNumber) {
+    return fetch(
+      `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${pageNumber}&language=en-US`
+    ).then(responseStatusHandling);
+}
