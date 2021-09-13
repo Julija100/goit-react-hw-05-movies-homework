@@ -1,5 +1,5 @@
 
-import { BASE_URL_IMG }from '../../../services/moviesApi'
+import { BASE_URL_IMG }from '../../services/moviesApi'
 
 export default function MovieCard({ movie }) {
     const movieGenres =

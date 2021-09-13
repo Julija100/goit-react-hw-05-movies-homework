@@ -1,13 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import {
-    fetchMoviesByName,
-    fetchPopularMoviesByDay,
-    fetchMoviesById,
-    fetchMoviesByCast,
-    fetchMoviesByReviews,
-} from '../services/moviesApiService';
+import { fetchPopularMoviesByDay } from '../services/moviesApiService';
 import { loadingStateStatus } from '../utils/loadingStateStatus';
+// import MoviesGallery from 
 
 export default function HomePage() {
     const [loadStatus, setLoadStatus] = useState(loadingStateStatus.IDLE);
