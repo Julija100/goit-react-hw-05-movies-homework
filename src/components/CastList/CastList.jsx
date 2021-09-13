@@ -6,35 +6,33 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 
-import {BASE_URL_IMG } from "../../services/moviesApiConstants";
-// import noPhoto from "../../images/no-photo.jpg";
-import StylesCastLis from "./StylesCastList";
+import { BASE_URL_IMG } from "../../services/moviesApi";
+import imageNotFound from '../../images/imageNotFound.png'
+
 
 export default function CastList({ castData }) {
-  const classes = StylesCastLis();
+  
 
   return (
     <Grid
       container
       component="ul"
       spacing={2}
-      className={`list ${classes.castCardList}`}
+
     >
       {castData.map(({ id, profile_path, name, character }) => (
         <Grid component="li" item key={id} xs={6} sm={3} md={2}>
-          <Card component="div" className={classes.castCard}>
+          <Card component="div">
             <CardMedia
               component="img"
-              className={classes.castCardImg}
-              src={profile_path ? `${BASE_IMG_URL}${profile_path}` : noPhoto}
+              src={profile_path ? `${BASE_URL_IMG}${profile_path}` : imageNotFound}
               alt={name}
             />
-            <CardContent className={classes.cardCardContent}>
+            <CardContent>
               <Typography
                 variant="subtitle2"
                 align="center"
                 component="p"
-                className={classes.castSubTitle}
               >
                 {name}
               </Typography>

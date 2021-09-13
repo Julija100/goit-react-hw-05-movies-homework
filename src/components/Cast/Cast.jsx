@@ -2,30 +2,34 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 import { fetchMoviesByCast } from "../../services/moviesApiService";
-import { loadingStatus } from "../../utils/loadingStateStatusConstants";
+import { loadingStateStatus } from "../../utils/loadingStateStatus";
 import Loader from "../../components/Loader/Loader";
 import CastList from "../CastList/CastList";
 
 export default function Cast() {
-  const [loadStatus, setLoadStatus] = useState(loadingStatus.IDLE);
+  const [loadStatus, setLoadStatus] = useState(loadingStateStatus.IDLE);
   const [cast, setCast] = useState(null);
   const { movieId } = useParams();
 
   useEffect(() => {
-    setLoadStatus(loadingStatus.PENDING);
+    setLoadStatus(loadingStateStatus.PENDING);
 
     fetchMoviesByCast(movieId).then((response) => {
       setCast(response.cast);
 
-      setLoadStatus(loadingStatus.RESOLVED);
+      setLoadStatus(loadingStateStatus.RESOLVED);
     });
   }, [movieId]);
 
   return (
     <>
-      {loadStatus === loadingStatus.PENDING && <Loader />}
-      {loadStatus === loadingStatus.RESOLVED && <CastList castData={cast} />}
-      {loadStatus === loadingStatus.REJECTED && <h2>Something wrong ...</h2>}
+      {loadStatus === loadingStateStatus.PENDING && <Loader />}
+      {loadStatus === loadingStateStatus.RESOLVED && (
+        <CastList castData={cast} />
+      )}
+      {loadStatus === loadingStateStatus.REJECTED && (
+        <h2>Something wrong ...</h2>
+      )}
     </>
   );
 }

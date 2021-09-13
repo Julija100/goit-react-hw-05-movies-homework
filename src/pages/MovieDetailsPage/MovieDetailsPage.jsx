@@ -3,7 +3,7 @@ import { Route, useParams } from "react-router";
 import { NavLink, useRouteMatch, useLocation, Link } from "react-router-dom";
 
 import Container from "@material-ui/core/Container";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+// import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 import { fetchMoviesById } from "../../services/moviesApiService";
 import { loadingStateStatus } from "../../utils/loadingStateStatus";
@@ -23,7 +23,7 @@ export default function MovieDetailsPage() {
     let { movieId } = useParams();
     const { url, path } = useRouteMatch();
     const location = useLocation();
-    const [prevLocation, serPrevLocation] = useState(
+    const [prevLocation, setPrevLocation] = useState(
         location?.state?.from ?? '/'
     );
     useEffect(() => {
@@ -41,27 +41,17 @@ export default function MovieDetailsPage() {
         {loadStatus === loadingStateStatus.PENDING && <Loader />}
         {loadStatus === loadingStateStatus.RESOLVED && (
           <Container maxWidth={"md"}>
-            <Link
-              to={prevLocation}
-            >
-              <ArrowBackIosIcon />
+            <Link to={prevLocation}>
+              {/* <ArrowBackIosIcon /> */}
               <span>Go back</span>
             </Link>
             <MovieDetails movie={movie} />
             <ul>
               <li>
-                <NavLink
-                  to={`${url}/cast`}
-                >
-                  Cast
-                </NavLink>
+                <NavLink to={`${url}/cast`}>Cast</NavLink>
               </li>
               <li>
-                <NavLink
-                  to={`${url}/reviews`}
-                >
-                  Reviews
-                </NavLink>
+                <NavLink to={`${url}/reviews`}>Reviews</NavLink>
               </li>
             </ul>
             <Suspense fallback={<Loader />}>
@@ -74,7 +64,9 @@ export default function MovieDetailsPage() {
             </Suspense>
           </Container>
         )}
-        {loadStatus === loadingStateStatus.REJECTED && <h2>Something wrong ...</h2>}
+        {loadStatus === loadingStateStatus.REJECTED && (
+          <h2>Something wrong ...</h2>
+        )}
       </section>
     );
 }
