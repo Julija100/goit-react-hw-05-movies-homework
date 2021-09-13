@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-import { fetchMovieCast } from "../../services/moviesApiService";
+import { fetchMoviesByCast } from "../../services/moviesApiService";
 import { loadingStatus } from "../../utils/loadingStateStatusConstants";
 import Loader from "../../components/Loader/Loader";
 import CastList from "../CastList/CastList";
@@ -14,7 +14,7 @@ export default function Cast() {
   useEffect(() => {
     setLoadStatus(loadingStatus.PENDING);
 
-    fetchMovieCast(movieId).then((response) => {
+    fetchMoviesByCast(movieId).then((response) => {
       setCast(response.cast);
 
       setLoadStatus(loadingStatus.RESOLVED);

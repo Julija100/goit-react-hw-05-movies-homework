@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { fetchMovieReviews } from "../../services/moviesApiService";
+import { fetchMoviesByReviews } from "../../services/moviesApiService";
 import { loadingStatus } from "../../utils/loadingStateStatusConstants";
 import Loader from "../../components/Loader/Loader";
 import ReviewsList from "../../components/ReviewsList/ReviewsList";
@@ -16,7 +16,7 @@ export default function Reviews() {
   useEffect(() => {
     setLoadStatus(loadingStatus.PENDING);
 
-    fetchMovieReviews(movieId, pageNumber)
+    fetchMoviesByReviews(movieId, pageNumber)
       .then((response) => {
         setReviews(response.results);
 

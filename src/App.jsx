@@ -13,15 +13,33 @@ const MoviesPage = lazy(() =>
   import('./pages/MoviesPage/MoviesPage')
 );
 
-// const MovieDetailsPage = lazy(() =>
-//   import ''
-// )
+const MovieDetailsPage = lazy(() =>
+  import('./pages/MovieDetailsPage/MovieDetailsPage')
+);
 
 
  export default function App() {
   return (
     <>
-      <Header/>
+      <Header />
+      <Suspense fallback={<Loader />}>
+        <Switch>
+          <Route path = '/' exact>
+<HomePage/>
+          </Route>
+          <Route path='/movies' exact>
+            <MoviesPage/>
+            </Route>
+
+          <Route path='/movies/:movieId'>
+            <MovieDetailsPage/>
+          </Route>
+          <Route>
+            <Redirect to ='/'/>
+          </Route>
+        </Switch>
+      </Suspense>
+      <Footer/>
       </>
   );
 }

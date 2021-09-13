@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { BASE_URL_IMG } from '../../services/moviesApi';
-import imageNotFound from '../../images/imageNotFound'
+import imageNotFound from '../../images/imageNotFound.png';
 
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
