@@ -2,7 +2,12 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { fetchPopularMoviesByDay } from '../services/moviesApiService';
 import { loadingStateStatus } from '../utils/loadingStateStatus';
-// import MoviesGallery from 
+import MovieGallery from '../../src/components/MovieGallery/MovieGallery'
+import Loader from '../components/Loader/Loader'
+// import ErrorNotification from
+
+
+import Container from "@material-ui/core/Container";
 
 export default function HomePage() {
     const [loadStatus, setLoadStatus] = useState(loadingStateStatus.IDLE);
