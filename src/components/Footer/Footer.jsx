@@ -1,9 +1,13 @@
 import React from 'react';
-// import { NavLink, Route, Switch, Redirect, useParams } from "react-router-dom";
+import { Copyright } from '../Copyright/Copyright';
+
 
 export default function Footer() {
-    return(
+    return (
         <>
-            </>
-    )
+            <footer>
+                <Copyright />
+            </footer>
+        </>
+    );
 }

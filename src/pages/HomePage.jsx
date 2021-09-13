@@ -21,14 +21,23 @@ export default function HomePage() {
         fetchPopularMoviesByDay(pageNumber).then((movies) => {
             setMovies(movies.results);
             setLoadStatus(loadingStateStatus.RESOLVED);
-        });
+        })
+            .catch((error) => {
+                setError(error.message);
+                setLoadStatus(loadingStateStatus.REJECTED)
+            });
     }, [pageNumber]);
 
-    const onNextPageClick = () => {
-        setPageNumber(pageNumber + 1);
-    };
     return (
         <>
+            <section>
+                <Container maxWidth={'md'}>
+                    <h1>Trending today</h1>
+                    {loadStatus === loadingStateStatus.PENDING && <Loader />}
+                    {loadStatus === loadingStateStatus.RESOLVED && (<MovieGallery movies={movies} url={'/movies '} />)}
+                    {loadStatus === loadingStateStatus.REJECTED && (<ErrorNotification message={error}/>)}
+                </Container>
+            </section>
         </>
     )
 }
