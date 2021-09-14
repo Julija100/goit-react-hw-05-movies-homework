@@ -3,7 +3,7 @@ import { Route, useParams } from "react-router";
 import { NavLink, useRouteMatch, useLocation, Link } from "react-router-dom";
 
 import Container from "@material-ui/core/Container";
-// import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 import { fetchMoviesById } from "../../services/moviesApiService";
 import { loadingStateStatus } from "../../utils/loadingStateStatus";
@@ -42,7 +42,7 @@ export default function MovieDetailsPage() {
         {loadStatus === loadingStateStatus.RESOLVED && (
           <Container maxWidth={"md"}>
             <Link to={prevLocation}>
-              {/* <ArrowBackIosIcon /> */}
+              <ArrowBackIosIcon />
               <span>Go back</span>
             </Link>
             <MovieDetails movie={movie} />

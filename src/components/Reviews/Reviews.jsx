@@ -6,7 +6,7 @@ import Loader from "../../components/Loader/Loader";
 import ReviewsList from "../../components/ReviewList/ReviewList";
 import ErrorNotification from "../../components/ErrorNotification/ErrorNotification";
 
-let pageNumber = 1; //for test
+let pageNumber = 1; 
 export default function Reviews() {
   const [loadStatus, setLoadStatus] = useState(loadingStateStatus.IDLE);
   const [reviews, setReviews] = useState(null);
