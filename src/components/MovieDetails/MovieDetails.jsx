@@ -2,6 +2,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 
+import imageNotFound from "../../images/imageNotFound.png";
 import { BASE_URL_IMG } from "../../services/moviesApi";
 
 export default function MovieDetails({ movie }) {
@@ -21,7 +22,7 @@ export default function MovieDetails({ movie }) {
     <Card component="div">
       <CardMedia
         component="img"
-        src={`${BASE_URL_IMG}${poster_path}`}
+        src={poster_path ? `${BASE_URL_IMG}${poster_path}` : imageNotFound}
         alt={title}
       />
       <CardContent>

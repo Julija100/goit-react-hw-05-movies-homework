@@ -16,12 +16,11 @@ export default function CastList({ castData }) {
   return (
     <Grid
       container
-      component="ul"
       spacing={2}
 
     >
       {castData.map(({ id, profile_path, name, character }) => (
-        <Grid component="li" item key={id} xs={6} sm={3} md={2}>
+        <Grid item key={id} xs={6} sm={3} md={2}>
           <Card component="div">
             <CardMedia
               component="img"

@@ -29,15 +29,19 @@ export default function HomePage() {
     }, [pageNumber]);
 
     return (
-        <>
-            <section>
-                <Container maxWidth={'md'}>
-                    <h1>Trending today</h1>
-                    {loadStatus === loadingStateStatus.PENDING && <Loader />}
-                    {loadStatus === loadingStateStatus.RESOLVED && (<MovieGallery movies={movies} url={'/movies '} />)}
-                    {loadStatus === loadingStateStatus.REJECTED && (<ErrorNotification message={error}/>)}
-                </Container>
-            </section>
-        </>
-    )
+      <>
+        <section>
+          <Container maxWidth={"md"}>
+            <h1>Trending today</h1>
+            {loadStatus === loadingStateStatus.PENDING && <Loader />}
+            {loadStatus === loadingStateStatus.RESOLVED && (
+              <MovieGallery movies={movies} url="/movies" />
+            )}
+            {loadStatus === loadingStateStatus.REJECTED && (
+              <ErrorNotification message={error} />
+            )}
+          </Container>
+        </section>
+      </>
+    );
 }

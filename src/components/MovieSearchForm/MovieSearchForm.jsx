@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import SearchButton from '../../components/SearchButton/SearchButton';
+import style from "../MovieSearchForm/StyledMovieSearchForm.module.css";
 
 function MovieSearchForm({ getFormData }) {
     const [inputValue, setInputValue] = useState('');
@@ -15,11 +16,11 @@ function MovieSearchForm({ getFormData }) {
         setInputValue('');
     };
     return (
-        <form onSubmit={onFormSubmit}>
+        <form className={style.form} onSubmit={onFormSubmit}>
             <div>
                 <label>
-                    <span>Search movie</span>
-                    <input
+                    <span className={style.searchMovie}>Search movie</span>
+                    <input className={style.input}
                         type="text"
                         autoComplete='off'
                         autoFocus
@@ -28,7 +29,7 @@ function MovieSearchForm({ getFormData }) {
                         onChange={onInputChange}
                     />
                 </label>
-                <SearchButton />
+                <SearchButton/>
             </div>
         </form>
     );
